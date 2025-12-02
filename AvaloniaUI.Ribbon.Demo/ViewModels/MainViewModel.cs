@@ -56,23 +56,6 @@ public partial class MainViewModel : ViewModelBase
         LastActionText = paramString;
     }
 
-    /// <summary>
-    ///     Called when [switch theme changed].
-    /// </summary>
-    /// <param name="value">if set to <c>true</c> [value].</param>
-    partial void OnSwitchThemeChanged(bool value)
-    {
-        switch (value)
-        {
-            case true:
-                App.ThemeManager.Switch(0);
-                break;
-
-            case false:
-                App.ThemeManager.Switch(1);
-                break;
-        }
-    }
 
     /// <summary>
     ///     Handle Orientation Change event

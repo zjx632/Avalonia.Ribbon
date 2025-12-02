@@ -1,13 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.7.34202.233
+# Visual Studio Version 18
+VisualStudioVersion = 18.0.11222.15 d18.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AvaloniaUI.Ribbon", "AvaloniaUI.Ribbon\AvaloniaUI.Ribbon.csproj", "{49D7DCC7-BD40-41D3-9F18-C653476E6AA2}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AvaloniaUI.Ribbon.Desktop", "AvaloniaUI.Ribbon.Desktop\AvaloniaUI.Ribbon.Desktop.csproj", "{F2F7E655-E83D-4024-B155-CA5FCE3A827B}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Avalonia.ThemeManager", "..\Avalonia.ThemeManager\src\Avalonia.ThemeManager\Avalonia.ThemeManager.csproj", "{A6EA8EA8-481C-452F-BF86-A3BB6E70494B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5C7486EA-CC17-411E-AF7A-0410EB2A2F34}"
 	ProjectSection(SolutionItems) = preProject
@@ -37,10 +35,6 @@ Global
 		{F2F7E655-E83D-4024-B155-CA5FCE3A827B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F2F7E655-E83D-4024-B155-CA5FCE3A827B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F2F7E655-E83D-4024-B155-CA5FCE3A827B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A6EA8EA8-481C-452F-BF86-A3BB6E70494B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A6EA8EA8-481C-452F-BF86-A3BB6E70494B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A6EA8EA8-481C-452F-BF86-A3BB6E70494B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A6EA8EA8-481C-452F-BF86-A3BB6E70494B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2C3E39B6-34FD-45A5-AD0C-5C14B628B16D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2C3E39B6-34FD-45A5-AD0C-5C14B628B16D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2C3E39B6-34FD-45A5-AD0C-5C14B628B16D}.Release|Any CPU.ActiveCfg = Release|Any CPU

@@ -43,9 +43,9 @@
         <WarningLevel>4</WarningLevel>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="Avalonia" Version="11.3.0" />
-        <PackageReference Include="System.Text.Json" Version="8.0.5" />
-        <PackageReference Include="Xaml.Behaviors.Avalonia" Version="11.3.0.7" />
+        <PackageReference Include="Avalonia" Version="11.3.9" />
+        <PackageReference Include="System.Text.Json" Version="10.0.0" />
+        <PackageReference Include="Xaml.Behaviors.Avalonia" Version="11.3.9" />
     </ItemGroup>
     <ItemGroup>
         <Compile Update="**\*.axaml.cs">

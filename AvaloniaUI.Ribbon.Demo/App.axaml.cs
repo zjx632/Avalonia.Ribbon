@@ -2,7 +2,6 @@
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Data.Core.Plugins;
 using Avalonia.Markup.Xaml;
-using Avalonia.ThemeManager;
 
 using AvaloniaUI.Ribbon.Demo.ViewModels;
 using AvaloniaUI.Ribbon.Demo.Views;
@@ -11,13 +10,8 @@ namespace AvaloniaUI.Ribbon.Demo;
 
 public class App : Application
 {
-    public static IThemeManager? ThemeManager;
-
     public override void Initialize()
     {
-        ThemeManager = new FluentThemeManager();
-        ThemeManager.Initialize(this);
-        ThemeManager.Switch(0);
         AvaloniaXamlLoader.Load(this);
     }
 
