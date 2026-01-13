@@ -1,4 +1,4 @@
-﻿<Styles
+<Styles
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:converters="clr-namespace:AvaloniaUI.Ribbon.Converters;assembly=AvaloniaUI.Ribbon"
@@ -122,17 +122,17 @@
                                 Width="{Binding Path=Bounds.Width, RelativeSource={RelativeSource Mode=TemplatedParent}}"
                                 Height="96"
                                 IsOpen="{Binding IsCollapsedPopupOpen, RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=TwoWay}"
-                                Placement="LeftEdgeAlignedBottom"
-                                PlacementTarget="{Binding ElementName=SeparatorRectangle}"
-                                VerticalOffset="-1">
+                                Placement="Bottom"
+                                PlacementTarget="{Binding ElementName=HeaderDockPanel}"
+                                VerticalOffset="0">
                                 <ContentControl
                                     x:Name="PART_PopupGroupsPresenterHolder"
                                     HorizontalAlignment="Stretch"
                                     VerticalAlignment="Stretch"
                                     HorizontalContentAlignment="Stretch"
                                     VerticalContentAlignment="Stretch"
-                                    Background="{TemplateBinding Background}"
-                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    Background="{DynamicResource SystemControlBackgroundChromeMediumLowBrush}"
+                                    BorderBrush="{DynamicResource SystemControlForegroundBaseHighBrush}"
                                     BorderThickness="0,1" />
                             </Popup>
                         </Panel>
@@ -235,7 +235,7 @@
                                     ToolTip.Tip="{DynamicResource AvaloniaRibbon.GetHelp}" />
                             </DockPanel>
 
-                            <LayoutTransformControl VerticalAlignment="Top">
+                            <LayoutTransformControl VerticalAlignment="Top" x:Name="VerticalHeaderLayoutControl">
                                 <LayoutTransformControl.LayoutTransform>
                                     <RotateTransform Angle="-90" />
                                 </LayoutTransformControl.LayoutTransform>
@@ -261,16 +261,16 @@
                                 Width="138"
                                 Height="{Binding Path=Bounds.Height, RelativeSource={RelativeSource Mode=TemplatedParent}}"
                                 IsOpen="{Binding IsCollapsedPopupOpen, RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=TwoWay}"
-                                Placement="Right">
-                                <!--  PlacementTarget="{Binding ElementName=SeparatorRectangle}"  -->
+                                Placement="Right"
+                                PlacementTarget="{Binding ElementName=VerticalHeaderLayoutControl}">
                                 <ContentControl
                                     x:Name="PART_PopupGroupsPresenterHolder"
                                     HorizontalAlignment="Stretch"
                                     VerticalAlignment="Stretch"
                                     HorizontalContentAlignment="Stretch"
                                     VerticalContentAlignment="Stretch"
-                                    Background="{TemplateBinding Background}"
-                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    Background="{DynamicResource SystemControlBackgroundChromeMediumLowBrush}"
+                                    BorderBrush="{DynamicResource SystemControlForegroundBaseHighBrush}"
                                     BorderThickness="1,0" />
                             </Popup>
                         </DockPanel>

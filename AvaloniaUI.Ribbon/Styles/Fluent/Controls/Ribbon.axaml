@@ -1,4 +1,4 @@
-﻿<Styles
+<Styles
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:converters="clr-namespace:AvaloniaUI.Ribbon.Converters;assembly=AvaloniaUI.Ribbon"
@@ -119,20 +119,29 @@
                             <Popup
                                 x:Name="PART_CollapsedContentPopup"
                                 Width="{Binding Path=Bounds.Width, RelativeSource={RelativeSource Mode=TemplatedParent}}"
-                                Height="96"
+                                Height="110"
                                 IsOpen="{Binding IsCollapsedPopupOpen, RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=TwoWay}"
-                                Placement="LeftEdgeAlignedBottom"
-                                PlacementTarget="{Binding ElementName=SeparatorRectangle}"
-                                VerticalOffset="-1">
-                                <ContentControl
-                                    x:Name="PART_PopupGroupsPresenterHolder"
-                                    HorizontalAlignment="Stretch"
-                                    VerticalAlignment="Stretch"
-                                    HorizontalContentAlignment="Stretch"
-                                    VerticalContentAlignment="Stretch"
-                                    Background="{TemplateBinding Background}"
-                                    BorderBrush="{TemplateBinding BorderBrush}"
-                                    BorderThickness="0,1" />
+                                Placement="Bottom"
+                                PlacementTarget="{Binding ElementName=HeaderDockPanel}"
+                                VerticalOffset="0">
+                                <Panel Margin="4,0,4,4">
+                                    <Border
+                                        Height="96"
+                                        HorizontalAlignment="Stretch"
+                                        VerticalAlignment="Stretch"
+                                        Background="{DynamicResource SystemControlForegroundChromeMediumBrush}"
+                                        BorderBrush="Transparent"
+                                        BorderThickness="0"
+                                        CornerRadius="4"
+                                        BoxShadow="0 4 10 #40000000">
+                                        <ContentControl
+                                            x:Name="PART_PopupGroupsPresenterHolder"
+                                            HorizontalAlignment="Stretch"
+                                            VerticalAlignment="Stretch"
+                                            HorizontalContentAlignment="Stretch"
+                                            VerticalContentAlignment="Stretch" />
+                                    </Border>
+                                </Panel>
                             </Popup>
                         </Panel>
                         <Panel Margin="0,-2,0,0">
@@ -143,7 +152,8 @@
                                 IsVisible="False" />
                             <ContentControl Name="PART_GroupsPresenterHolder"
                                             Background="{DynamicResource SystemControlForegroundChromeMediumBrush}"
-                                            HorizontalAlignment="Stretch">
+                                            HorizontalAlignment="Stretch"
+                                            CornerRadius="4">
                                 <ItemsControl
                                     Name="PART_SelectedGroupsHost"
                                     Height="96"
@@ -234,7 +244,7 @@
                                     Content="{TemplateBinding HelpPaneContent}"
                                     ToolTip.Tip="{DynamicResource AvaloniaRibbon.GetHelp}" />
                             </DockPanel>
-                            <LayoutTransformControl VerticalAlignment="Top">
+                            <LayoutTransformControl VerticalAlignment="Top" x:Name="VerticalHeaderLayoutControl">
                                 <LayoutTransformControl.LayoutTransform>
                                     <RotateTransform Angle="-90" />
                                 </LayoutTransformControl.LayoutTransform>
@@ -259,16 +269,16 @@
                                 Width="138"
                                 Height="{Binding Path=Bounds.Height, RelativeSource={RelativeSource Mode=TemplatedParent}}"
                                 IsOpen="{Binding IsCollapsedPopupOpen, RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=TwoWay}"
-                                Placement="Right">
-                                <!--  PlacementTarget="{Binding ElementName=SeparatorRectangle}"  -->
+                                Placement="Right"
+                                PlacementTarget="{Binding ElementName=VerticalHeaderLayoutControl}">
                                 <ContentControl
                                     x:Name="PART_PopupGroupsPresenterHolder"
                                     HorizontalAlignment="Stretch"
                                     VerticalAlignment="Stretch"
                                     HorizontalContentAlignment="Stretch"
                                     VerticalContentAlignment="Stretch"
-                                    Background="{TemplateBinding Background}"
-                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    Background="{DynamicResource SystemControlBackgroundChromeMediumLowBrush}"
+                                    BorderBrush="{DynamicResource SystemControlForegroundBaseHighBrush}"
                                     BorderThickness="1,0" />
                             </Popup>
                         </DockPanel>
@@ -403,6 +413,8 @@
                 <StackPanel Orientation="Vertical" />
             </ItemsPanelTemplate>
         </Setter>
+    </Style>
+    <Style Selector="local|Ribbon /template/ Popup#PART_CollapsedContentPopup">
     </Style>
     <!--Style Selector="local|Ribbon /template/ Popup Menu.RibbonMenuMenu[IsOpen=True]">
     <Setter Property="Margin" Value="0,0,-200,0" />

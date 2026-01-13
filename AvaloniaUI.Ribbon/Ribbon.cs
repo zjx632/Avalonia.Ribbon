@@ -458,13 +458,8 @@ public class Ribbon : TabControl, IRibbon
     /// <param name="e"></param>
     private void OnCollapsedRibbon_Open(object sender, EventArgs e)
     {
-        var popup = sender as Popup;
-        if (popup == null) return;
-
-        Console.Write(popup.HorizontalOffset);
-        Console.Write(popup.VerticalOffset);
-        Console.Write(popup.PlacementRect);
-        Console.Write(popup.PlacementTarget);
+        // Popup位置由XAML中的PlacementTarget控制
+        // 此方法保留用于将来的调试或额外处理
     }
 
     protected override void OnAttachedToVisualTree(VisualTreeAttachmentEventArgs e)
