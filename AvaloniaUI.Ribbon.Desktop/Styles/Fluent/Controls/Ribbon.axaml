@@ -1,4 +1,4 @@
-<Styles
+﻿<Styles
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:converters="clr-namespace:AvaloniaUI.Ribbon.Converters;assembly=AvaloniaUI.Ribbon"
@@ -21,9 +21,9 @@
 
     <Style Selector="windows|DesktopRibbon[Orientation=Horizontal]">
         <Setter Property="Focusable" Value="True" />
-        <Setter Property="HeaderBackground" Value="{DynamicResource SystemControlBackgroundChromeMediumLowBrush}" />
+        <Setter Property="HeaderBackground" Value="{DynamicResource RibbonHeaderBackgroundBrush}" />
         <Setter Property="HeaderForeground" Value="{DynamicResource ButtonForeground}" />
-        <Setter Property="Background" Value="{DynamicResource SystemControlBackgroundChromeMediumLowBrush}" />
+        <Setter Property="Background" Value="{DynamicResource RibbonHeaderBackgroundBrush}" />
         <Setter Property="Foreground" Value="{DynamicResource ButtonForeground}" />
         <Setter Property="BorderBrush" Value="Transparent" />
         <Setter Property="BorderThickness" Value="0" />
@@ -131,7 +131,7 @@
                                     VerticalAlignment="Stretch"
                                     HorizontalContentAlignment="Stretch"
                                     VerticalContentAlignment="Stretch"
-                                    Background="{DynamicResource SystemControlBackgroundChromeMediumLowBrush}"
+                                    Background="{DynamicResource RibbonHeaderBackgroundBrush}"
                                     BorderBrush="{DynamicResource SystemControlForegroundBaseHighBrush}"
                                     BorderThickness="0,1" />
                             </Popup>
@@ -143,7 +143,7 @@
                                 ContentTemplate="{TemplateBinding SelectedContentTemplate}"
                                 IsVisible="False" />
                             <ContentControl Name="PART_GroupsPresenterHolder" HorizontalAlignment="Stretch"
-                                            Background="{DynamicResource SystemControlForegroundChromeMediumBrush}">
+                                            Background="{DynamicResource RibbonGroupsBackgroundBrush}">
                                 <ItemsControl
                                     Name="PART_SelectedGroupsHost"
                                     Height="96"

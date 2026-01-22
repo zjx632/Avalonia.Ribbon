@@ -2,6 +2,17 @@
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:system="clr-namespace:System;assembly=netstandard">
+
+    
+
+    <SolidColorBrush x:Key="RibbonHeaderBackgroundBrush" Color="{DynamicResource SystemControlBackgroundChromeMediumLowBrush}" />
+    <SolidColorBrush x:Key="RibbonGroupsBackgroundBrush" Color="Red" />
+
+    <!--<LinearGradientBrush x:Key="RibbonGroupsBackgroundBrush" EndPoint="50%,100%" StartPoint="50%,0%" Opacity=".25">
+        <GradientStop Color="Red" Offset="0" />
+        <GradientStop Color="Red" Offset="1" />
+    </LinearGradientBrush>-->
+
     <ControlTemplate x:Key="CheckableMenuItemControlTemplate" TargetType="{x:Type MenuItem}">
         <Panel>
             <Border

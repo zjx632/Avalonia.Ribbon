@@ -113,6 +113,9 @@ public class Ribbon : TabControl, IRibbon
         AvaloniaProperty.RegisterDirect<Ribbon, ObservableCollection<Control>>(nameof(Tabs), o => o.Tabs,
             (o, v) => o.Tabs = v);
 
+    public static readonly StyledProperty<bool> ShowGroupBoxHeadersProperty =
+        AvaloniaProperty.Register<Ribbon, bool>(nameof(ShowGroupBoxHeaders), true);
+
     #endregion Static Properties
 
     #region Fields
@@ -213,6 +216,12 @@ public class Ribbon : TabControl, IRibbon
     {
         get => _tabs;
         set => SetAndRaise(TabsProperty, ref _tabs, value);
+    }
+
+    public bool ShowGroupBoxHeaders
+    {
+        get => GetValue(ShowGroupBoxHeadersProperty);
+        set => SetValue(ShowGroupBoxHeadersProperty, value);
     }
 
     #endregion Properties

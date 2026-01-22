@@ -74,10 +74,11 @@
 				<DockPanel Background="{TemplateBinding Background}" LastChildFill="True">
 					<Border
                         x:Name="VerticalSeparator"
-                        Height="{StaticResource LargeControlHeight}"
+                        
                         Margin="4,0"
                         BorderBrush="{DynamicResource SystemControlHighlightAltBaseLowBrush}"
-                        BorderThickness="0.5"
+                        BorderThickness="0,0,0.5,0"
+						BoxShadow="2 2 5 0 #CCCCCC"
                         DockPanel.Dock="Right">
 						<Interaction.Behaviors>
 							<DataTriggerBehavior
@@ -163,7 +164,14 @@
                                 HorizontalContentAlignment="Center"
                                 Content="{TemplateBinding Header}"
                                 FontSize="11"
-                                Foreground="{TemplateBinding Foreground}" />
+                                Foreground="{TemplateBinding Foreground}">
+								<ContentPresenter.IsVisible>
+									<MultiBinding Converter="{x:Static converters:BoolAndConverter.Instance}">
+										<Binding Path="ShowHeader" RelativeSource="{RelativeSource TemplatedParent}" />
+										<Binding Path="$parent[Ribbon].ShowGroupBoxHeaders" />
+									</MultiBinding>
+								</ContentPresenter.IsVisible>
+							</ContentPresenter>
 						</DockPanel>
 						<ItemsPresenter
                             x:Name="PART_ItemsPresenter"

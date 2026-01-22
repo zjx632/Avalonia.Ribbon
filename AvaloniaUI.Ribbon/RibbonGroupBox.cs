@@ -35,6 +35,9 @@ public class RibbonGroupBox : HeaderedItemsControl
         StyledProperty<RibbonGroupBox>.Register<RibbonGroupBox, GroupDisplayMode>(nameof(DisplayMode),
             GroupDisplayMode.Small);
 
+    public static readonly StyledProperty<bool> ShowHeaderProperty =
+        StyledProperty<RibbonGroupBox>.Register<RibbonGroupBox, bool>(nameof(ShowHeader), true);
+
     #endregion Static Properties
 
     #region Properties
@@ -74,6 +77,12 @@ public class RibbonGroupBox : HeaderedItemsControl
     {
         get => GetValue(DisplayModeProperty);
         set => SetValue(DisplayModeProperty, value);
+    }
+
+    public bool ShowHeader
+    {
+        get => GetValue(ShowHeaderProperty);
+        set => SetValue(ShowHeaderProperty, value);
     }
 
     #endregion

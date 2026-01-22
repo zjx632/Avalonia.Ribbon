@@ -1,4 +1,4 @@
-<Styles
+﻿<Styles
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:converters="clr-namespace:AvaloniaUI.Ribbon.Converters;assembly=AvaloniaUI.Ribbon"
@@ -6,6 +6,7 @@
     xmlns:sys="clr-namespace:System;assembly=netstandard">
     <Styles.Resources>
         <converters:BoundsPointToAdjustedPointConverter x:Key="BoundsPointToAdjustedPointConverter" />
+        <converters:HeaderHeightConverter x:Key="HeaderHeightConverter" />
     </Styles.Resources>
     <Design.PreviewWith>
         <Panel Width="200">
@@ -21,9 +22,9 @@
 
     <Style Selector="local|Ribbon[Orientation=Horizontal]">
         <Setter Property="Focusable" Value="True" />
-        <Setter Property="HeaderBackground" Value="{DynamicResource SystemControlBackgroundChromeMediumLowBrush}" />
+        <Setter Property="HeaderBackground" Value="{DynamicResource RibbonHeaderBackgroundBrush}" />
         <Setter Property="HeaderForeground" Value="{DynamicResource ButtonForeground}" />
-        <Setter Property="Background" Value="{DynamicResource SystemControlBackgroundChromeMediumLowBrush}" />
+        <Setter Property="Background" Value="{DynamicResource RibbonHeaderBackgroundBrush}" />
         <Setter Property="Foreground" Value="{DynamicResource ButtonForeground}" />
         <Setter Property="BorderBrush" Value="Transparent" />
         <Setter Property="BorderThickness" Value="0" />
@@ -129,7 +130,7 @@
                                         Height="96"
                                         HorizontalAlignment="Stretch"
                                         VerticalAlignment="Stretch"
-                                        Background="{DynamicResource SystemControlForegroundChromeMediumBrush}"
+                                        Background="{DynamicResource RibbonGroupsBackgroundBrush}"
                                         BorderBrush="Transparent"
                                         BorderThickness="0"
                                         CornerRadius="4"
@@ -151,12 +152,12 @@
                                 ContentTemplate="{TemplateBinding SelectedContentTemplate}"
                                 IsVisible="False" />
                             <ContentControl Name="PART_GroupsPresenterHolder"
-                                            Background="{DynamicResource SystemControlForegroundChromeMediumBrush}"
+                                            Background="{DynamicResource RibbonGroupsBackgroundBrush}"
                                             HorizontalAlignment="Stretch"
                                             CornerRadius="4">
                                 <ItemsControl
                                     Name="PART_SelectedGroupsHost"
-                                    Height="96"
+                                    Height="{Binding ShowGroupBoxHeaders, RelativeSource={RelativeSource Mode=TemplatedParent}, Converter={StaticResource HeaderHeightConverter}}"
                                     MinWidth="100"
                                     HorizontalAlignment="Stretch"
                                     VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
@@ -295,7 +296,7 @@
                                     ContentTemplate="{TemplateBinding SelectedContentTemplate}"
                                     IsVisible="False" />
                                 <ContentControl Name="PART_GroupsPresenterHolder" VerticalAlignment="Stretch"
-                                                Background="{DynamicResource SystemControlForegroundChromeMediumBrush}">
+                                                Background="{DynamicResource RibbonGroupsBackgroundBrush}">
                                     <ItemsControl
                                         Name="PART_SelectedGroupsHost"
                                         Width="138"

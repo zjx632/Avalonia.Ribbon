@@ -1,14 +1,15 @@
 ﻿<Styles
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="clr-namespace:AvaloniaUI.Ribbon;assembly=AvaloniaUI.Ribbon">
+    xmlns:local="clr-namespace:AvaloniaUI.Ribbon;assembly=AvaloniaUI.Ribbon"
+    >
     <Design.PreviewWith>
         <RibbonTab Header="Test" />
     </Design.PreviewWith>
 
     <Style Selector="local|RibbonTab">
         <Setter Property="FontSize" Value="12.5" />
-        <Setter Property="Height" Value="30" />
+        <Setter Property="Height" Value="24" />
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="Foreground" Value="{Binding $parent[Ribbon].Foreground}" />
         <Setter Property="BorderBrush" Value="Transparent" />
@@ -16,11 +17,26 @@
         <Setter Property="Padding" Value="10,0" />
         <Setter Property="Template">
             <ControlTemplate>
-                <Border Background="{TemplateBinding Background}"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}" HorizontalAlignment="Stretch"
-                        VerticalAlignment="Stretch">
-                    <Panel x:Name="ContentPanel" HorizontalAlignment="Center" Margin="{TemplateBinding Padding}">
+                <Border
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
+                    >
+                    <Grid
+                        x:Name="ContentPanel"
+                        HorizontalAlignment="Center"
+                        Margin="{TemplateBinding Padding}"
+                        >
+                        <Viewbox Stretch="Uniform" Name="SelectedBorder" IsVisible="False"> 
+                            <Border Padding="0,1,0,0">
+								<Path Data="M 0,30 L 0,5 A 5,5 0 0 1 5,0 L 95,0 A 5,5 0 0 1 100,5 L 100,30 Z" Fill="{DynamicResource RibbonSelectedTabBrush}"/> 
+                            </Border>
+                            
+                        </Viewbox>
+
+
                         <ContentPresenter
                             Name="PART_ContentPresenter"
                             HorizontalAlignment="Center"
@@ -29,7 +45,8 @@
                             VerticalContentAlignment="Center"
                             Content="{TemplateBinding Header}"
                             TextBlock.Foreground="{TemplateBinding Foreground}"
-                            ContentTemplate="{TemplateBinding HeaderTemplate}" />
+                            ContentTemplate="{TemplateBinding HeaderTemplate}"
+                            />
                         <!--<Rectangle Classes="textEmphasis" Width="{Binding #PART_ContentPresenter.Bounds.Width}" Height="{Binding #PART_ContentPresenter.Bounds.Height}">
               <Rectangle.Fill>
                 <VisualBrush Stretch="Fill" Visual="{Binding #PART_ContentPresenter}"/>
@@ -45,13 +62,11 @@
                 <VisualBrush Stretch="Fill" Visual="{Binding #PART_ContentPresenter}"/>
               </Rectangle.Fill>
             </Rectangle>-->
-                        <Border x:Name="SelectedBorder" BorderThickness="0" MinWidth="3" MinHeight="3"
-                                IsVisible="{TemplateBinding IsSelected}" CornerRadius="1.5"
-                                HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="-2,3" />
+
                         <!--Panel IsVisible="{TemplateBinding IsContextual}" Opacity="0.25">
               <Border x:Name="ContextualSelectedBorder" BorderThickness="{Binding #SelectedBorder.BorderThickness}" HorizontalAlignment="{Binding #SelectedBorder.HorizontalAlignment}" VerticalAlignment="{Binding #SelectedBorder.VerticalAlignment}" IsVisible="{Binding #SelectedBorder.IsVisible}" Opacity="{Binding #SelectedBorder.Opacity}"/>
             </Panel-->
-                    </Panel>
+                    </Grid>
                 </Border>
             </ControlTemplate>
         </Setter>
@@ -72,6 +87,12 @@
     <Style Selector="local|RibbonTab[IsSelected=False]:not(:pointerover) /template/ Rectangle.textEmphasis">
         <Setter Property="IsVisible" Value="False" />
     </Style>
+
+
+    <Style Selector="local|RibbonTab[IsSelected=True] /template/ Viewbox#SelectedBorder">
+        <Setter Property="IsVisible" Value="True" />
+    </Style>
+
     <!--Style Selector="local|RibbonTab:not(:selected):not(:pointerover):not(:pressed) /template/ Border#SelectedBorder,
                    local|Ribbon[IsCollapsed=true][IsCollapsedPopupOpen=false] local|RibbonTab:not(:pointerover):not(:pressed) /template/ Border#SelectedBorder">
     <Setter Property="IsVisible" Value="False"/>
@@ -81,12 +102,7 @@
         <Setter Property="Opacity" Value="{DynamicResource ThemeDisabledOpacity}" />
     </Style>
 
-    <Style Selector="local|RibbonTab[IsContextual=True] /template/ Border#SelectedBorder">
-        <Setter Property="Background" Value="{Binding $parent[RibbonContextualTabGroup].Background}" />
-    </Style>
-    <Style Selector="local|RibbonTab[IsContextual=False] /template/ Border#SelectedBorder">
-        <Setter Property="Background" Value="{DynamicResource TabItemHeaderSelectedPipeFill}" />
-    </Style>
+
     <!--Style Selector="local|RibbonTab /template/ Panel#ContentPanel">
     <Setter Property="HorizontalAlignment" Value="Center"/>
     <Setter Property="Margin" Value="10,0"/>
