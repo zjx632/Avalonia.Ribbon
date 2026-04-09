@@ -49,7 +49,7 @@
             </ControlTemplate>
         </Setter>
         <Setter Property="QuickAccessTemplate">
-            <ControlTemplate>
+            <ControlTemplate x:CompileBindings="False">
                 <ToggleButton Classes="quickAccessButton" Command="{Binding Command}" IsChecked="{Binding IsChecked}"
                               CommandParameter="{Binding CommandParameter}" ToolTip.Tip="{Binding ToolTip.Tip}"
                               KeyTip.KeyTipKeys="{Binding KeyTip.Tip}" MinWidth="45" Height="34"

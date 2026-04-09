@@ -57,7 +57,7 @@
             </ControlTemplate>
         </Setter>
         <Setter Property="QuickAccessTemplate">
-            <ControlTemplate>
+            <ControlTemplate x:CompileBindings="False">
                 <Button Classes="quickAccessButton" Command="{Binding Command}"
                         CommandParameter="{Binding CommandParameter}" ToolTip.Tip="{Binding ToolTip.Tip}"
                         KeyTip.KeyTipKeys="{Binding KeyTip.Tip}" MinWidth="45" Height="34" Focusable="False">

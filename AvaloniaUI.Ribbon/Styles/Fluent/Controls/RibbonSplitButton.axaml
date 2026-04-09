@@ -7,7 +7,7 @@
         <Setter Property="BorderThickness" Value="{DynamicResource ButtonBorderThemeThickness}" />
         <Setter Property="Padding" Value="3" />
         <Setter Property="QuickAccessTemplate">
-            <ControlTemplate>
+            <ControlTemplate x:CompileBindings="False">
                 <RibbonSplitButton
                     Height="34"
                     KeyTip.KeyTipKeys="{Binding KeyTip.Tip}"
@@ -33,7 +33,7 @@
         <Setter Property="Padding" Value="9,9,9,3" />
         <Setter Property="MaxWidth" Value="66" />
         <Setter Property="Template">
-            <ControlTemplate>
+            <ControlTemplate x:CompileBindings="False">
                 <Border Classes="RibbonButtonBackgroundBorder">
                     <StackPanel Orientation="Vertical">
                         <Button
@@ -102,7 +102,7 @@
     </Style>
     <Style Selector="local|RibbonSplitButton[Size=Medium]">
         <Setter Property="Template">
-            <ControlTemplate>
+            <ControlTemplate x:CompileBindings="False">
                 <Border Classes="RibbonButtonBackgroundBorder">
                     <DockPanel>
                         <ToggleButton
@@ -172,7 +172,7 @@
     <Style Selector="local|RibbonSplitButton[Size=Small]">
         <Setter Property="Width" Value="42" />
         <Setter Property="Template">
-            <ControlTemplate>
+            <ControlTemplate x:CompileBindings="False">
                 <Border Classes="RibbonButtonBackgroundBorder">
                     <DockPanel>
                         <ToggleButton

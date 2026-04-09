@@ -14,14 +14,23 @@ namespace AvaloniaUI.Ribbon.Desktop;
 [TemplatePart("PART_MoreButton", typeof(ToggleButton))]
 public class QuickAccessToolbar : ItemsControl, INotifyPropertyChanged //, IKeyTipHandler
 {
+    /// <summary>
+    /// Deprecated. Use <see cref="QuickAccessProperties.IsCheckedProperty"/> instead.
+    /// Kept for API compatibility.
+    /// </summary>
+    [Obsolete("Use QuickAccessProperties.IsCheckedProperty instead.")]
+    public static readonly AttachedProperty<bool> IsCheckedProperty = QuickAccessProperties.IsCheckedProperty;
+
+    [Obsolete("Use QuickAccessProperties.GetIsChecked instead.")]
     public static bool GetIsChecked(MenuItem element)
     {
-        return element.GetValue(IsCheckedProperty);
+        return QuickAccessProperties.GetIsChecked(element);
     }
 
+    [Obsolete("Use QuickAccessProperties.SetIsChecked instead.")]
     public static void SetIsChecked(MenuItem element, bool value)
     {
-        element.SetValue(IsCheckedProperty, value);
+        QuickAccessProperties.SetIsChecked(element, value);
     }
 
     public bool AddItem(ICanAddToQuickAccess item)
@@ -146,9 +155,6 @@ public class QuickAccessToolbar : ItemsControl, INotifyPropertyChanged //, IKeyT
 
     #region Fields
 
-    public static readonly AttachedProperty<bool> IsCheckedProperty =
-        AvaloniaProperty.RegisterAttached<QuickAccessToolbar, MenuItem, bool>("IsChecked");
-
     public static readonly DirectProperty<QuickAccessToolbar, ObservableCollection<QuickAccessRecommendation>>
         RecommendedItemsProperty =
             AvaloniaProperty.RegisterDirect<QuickAccessToolbar, ObservableCollection<QuickAccessRecommendation>>(
@@ -172,9 +178,9 @@ public class QuickAccessToolbar : ItemsControl, INotifyPropertyChanged //, IKeyT
         RibbonProperty.Changed.AddClassHandler<QuickAccessToolbar>((sender, e) =>
         {
             if (sender.Ribbon != null)
-                sender._collapseRibbonItem[!IsCheckedProperty] = sender.Ribbon[!DesktopRibbon.IsCollapsedProperty];
+                sender._collapseRibbonItem[!QuickAccessProperties.IsCheckedProperty] = sender.Ribbon[!DesktopRibbon.IsCollapsedProperty];
             else
-                SetIsChecked(sender._collapseRibbonItem, false);
+                QuickAccessProperties.SetIsChecked(sender._collapseRibbonItem, false);
         });
     }
 

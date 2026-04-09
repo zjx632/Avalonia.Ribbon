@@ -342,7 +342,7 @@
     <Style Selector="local|Gallery /template/ RepeatButton,
                   local|Gallery /template/ ToggleButton">
         <Setter Property="BorderBrush"
-                Value="{Binding BorderBrush, RelativeSource={RelativeSource Mode=TemplatedParent}}" />
+                Value="{Binding $parent[local:Gallery].BorderBrush}" />
         <Setter Property="Margin" Value="0" />
         <Setter Property="VerticalAlignment" Value="Stretch" />
         <Setter Property="HorizontalAlignment" Value="Stretch" />

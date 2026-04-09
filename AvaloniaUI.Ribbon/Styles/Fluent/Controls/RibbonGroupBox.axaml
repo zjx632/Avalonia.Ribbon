@@ -184,7 +184,7 @@
                                         x:Name="PART_ItemsPanel"
                                         HorizontalAlignment="Stretch"
                                         VerticalAlignment="Stretch"
-                                        DisplayMode="{Binding DisplayMode, RelativeSource={RelativeSource TemplatedParent}}" />
+                                        DisplayMode="{Binding $parent[local|RibbonGroupBox].DisplayMode}" />
 								</ItemsPanelTemplate>
 							</ItemsPresenter.ItemsPanel>
 						</ItemsPresenter>

@@ -22,7 +22,7 @@
         <Setter Property="MaxSize" Value="Large" />
         <Setter Property="MinSize" Value="Large" />
         <Setter Property="Template">
-            <ControlTemplate>
+            <ControlTemplate x:CompileBindings="False">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" />
@@ -80,7 +80,7 @@
             </ControlTemplate>
         </Setter>
         <Setter Property="QuickAccessTemplate">
-            <ControlTemplate>
+            <ControlTemplate x:CompileBindings="False">
                 <local:SplitButtonControl
                     Theme="{DynamicResource SmallSplitButton}"
                     VerticalAlignment="Stretch"
@@ -122,7 +122,7 @@
         <Setter Property="MaxSize" Value="Medium" />
         <Setter Property="MinSize" Value="Medium" />
         <Setter Property="Template">
-            <ControlTemplate>
+            <ControlTemplate x:CompileBindings="False">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
@@ -181,7 +181,7 @@
             </ControlTemplate>
         </Setter>
         <Setter Property="QuickAccessTemplate">
-            <ControlTemplate>
+            <ControlTemplate x:CompileBindings="False">
                 <local:SplitButtonControl
                     VerticalAlignment="Stretch"
                     Theme="{DynamicResource SmallSplitButton}"
@@ -223,7 +223,7 @@
         <Setter Property="MaxSize" Value="Small" />
         <Setter Property="MinSize" Value="Small" />
         <Setter Property="Template">
-            <ControlTemplate>
+            <ControlTemplate x:CompileBindings="False">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
@@ -281,7 +281,7 @@
             </ControlTemplate>
         </Setter>
         <Setter Property="QuickAccessTemplate">
-            <ControlTemplate>
+            <ControlTemplate x:CompileBindings="False">
                 <local:SplitButtonControl
                     Theme="{DynamicResource SmallSplitButton}"
                     local:KeyTip.KeyTipKeys="{Binding KeyTip.Tip}"

@@ -509,7 +509,7 @@ public class Ribbon : TabControl, IRibbon
         }
     }
 
-    protected override void OnLostFocus(RoutedEventArgs e)
+    protected override void OnLostFocus(FocusChangedEventArgs e)
     {
         base.OnLostFocus(e);
         KeyTip.SetShowChildKeyTipKeys(this, false);
