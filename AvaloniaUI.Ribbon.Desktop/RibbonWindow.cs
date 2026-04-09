@@ -45,16 +45,16 @@ public class RibbonWindow : Window
             (sender, e) => sender.RefreshRibbon(e.OldValue, e.NewValue));
         QuickAccessToolbarProperty.Changed.AddClassHandler<RibbonWindow>((sender, e) =>
             sender.RefreshQat(e.OldValue, e.NewValue));
-        SystemDecorationsProperty.Changed.AddClassHandler<RibbonWindow>((sender, arg) =>
+        WindowDecorationsProperty.Changed.AddClassHandler<RibbonWindow>((sender, arg) =>
         {
-            if (arg.NewValue is SystemDecorations systemDecorations)
-                switch (systemDecorations)
+            if (arg.NewValue is WindowDecorations windowDecorations)
+                switch (windowDecorations)
                 {
-                    case SystemDecorations.Full:
+                    case WindowDecorations.Full:
                         sender.ExtendClientAreaToDecorationsHint = false;
                         break;
 
-                    case SystemDecorations.None:
+                    case WindowDecorations.None:
                         sender.ExtendClientAreaToDecorationsHint = true;
                         break;
                 }
@@ -65,7 +65,7 @@ public class RibbonWindow : Window
     {
         ExtendClientAreaTitleBarHeightHint = 35;
         ExtendClientAreaToDecorationsHint = true;
-        ExtendClientAreaChromeHints = ExtendClientAreaChromeHints.SystemChrome;
+        WindowDecorations = WindowDecorations.None;
         TransparencyLevelHint = new List<WindowTransparencyLevel> { WindowTransparencyLevel.AcrylicBlur };
         this.GetObservable(WindowStateProperty)
             .Subscribe(x =>
@@ -79,7 +79,7 @@ public class RibbonWindow : Window
             {
                 if (!x)
                 {
-                    SystemDecorations = SystemDecorations.Full;
+                    WindowDecorations = WindowDecorations.Full;
                     TransparencyLevelHint = new List<WindowTransparencyLevel> { WindowTransparencyLevel.Blur };
                 }
             });
@@ -131,9 +131,7 @@ public class RibbonWindow : Window
     {
         base.OnApplyTemplate(e);
         var window = this;
-        ExtendClientAreaChromeHints =
-            ExtendClientAreaChromeHints.PreferSystemChrome |
-            ExtendClientAreaChromeHints.OSXThickTitleBar;
+        WindowDecorations = WindowDecorations.None;
         try
         {
             var titleBar = GetControl<Control>(e, "PART_TitleBar");
@@ -258,7 +256,7 @@ public class RibbonWindow : Window
         control.Cursor = new Cursor(cursor);
         control.PointerPressed += (_, ep) =>
         {
-            if (this.GetVisualRoot() is Window window)
+            if (TopLevel.GetTopLevel(this) is Window window)
                 window.BeginResizeDrag(edge, ep);
         };
     }

@@ -476,9 +476,10 @@ public class Ribbon : TabControl, IRibbon
         base.OnAttachedToVisualTree(e);
 
         if (e.Root is WindowBase wnd)
+        {
             wnd.Deactivated += InputRoot_Deactivated;
-        if (e.Root is IInputRoot inputRoot)
-            inputRoot.AddHandler(PointerPressedEvent, InputRoot_PointerPressed, handledEventsToo: true);
+            wnd.AddHandler(PointerPressedEvent, InputRoot_PointerPressed, handledEventsToo: true);
+        }
 
         RefreshTabs();
         RefreshSelectedGroups();
@@ -489,9 +490,10 @@ public class Ribbon : TabControl, IRibbon
         base.OnDetachedFromVisualTree(e);
 
         if (e.Root is WindowBase wnd)
+        {
             wnd.Deactivated -= InputRoot_Deactivated;
-        if (e.Root is IInputRoot inputRoot)
-            inputRoot.RemoveHandler(PointerPressedEvent, InputRoot_PointerPressed);
+            wnd.RemoveHandler(PointerPressedEvent, InputRoot_PointerPressed);
+        }
     }
 
     protected override void OnKeyDown(KeyEventArgs e)

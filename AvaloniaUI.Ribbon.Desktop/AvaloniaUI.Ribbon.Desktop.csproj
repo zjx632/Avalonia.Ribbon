@@ -7,7 +7,7 @@
         <Authors>Splitwirez, Alban Mazerolles, Rubal Walia, Sachith Liyanagama</Authors>
         <AppDesignerFolder>Properties</AppDesignerFolder>
         <PackageId>AvaloniaControls.Ribbon.Desktop</PackageId>
-        <TargetFrameworks>netstandard2.0</TargetFrameworks>
+        <TargetFrameworks>net10.0</TargetFrameworks>
         <Version>0.9.9</Version>
         <LangVersion>latest</LangVersion>
         <FileAlignment>512</FileAlignment>
@@ -43,9 +43,8 @@
         <WarningLevel>4</WarningLevel>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="Avalonia" Version="11.3.9" />
-        <PackageReference Include="System.Text.Json" Version="10.0.0" />
-        <PackageReference Include="Xaml.Behaviors.Avalonia" Version="11.3.9" />
+        <PackageReference Include="Avalonia" Version="12.0.0" />
+        <PackageReference Include="Xaml.Behaviors.Avalonia" Version="12.0.0" />
     </ItemGroup>
     <ItemGroup>
         <Compile Update="**\*.axaml.cs">
