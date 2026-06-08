@@ -15,6 +15,7 @@ using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.Layout;
 using Avalonia.Media;
+using Avalonia.Threading;
 using AvaloniaUI.Ribbon.Contracts;
 
 namespace AvaloniaUI.Ribbon;
@@ -643,17 +644,37 @@ public class Ribbon : TabControl, IRibbon
 
     protected void UpdatePresenterLocation(bool intoFlyout)
     {
-        if (_groupsHost.Parent is ContentPresenter presenter)
-            presenter.Content = null;
-        else if (_groupsHost.Parent is ContentControl control)
-            control.Content = null;
-        else if (_groupsHost.Parent is Panel panel)
-            panel.Children.Remove(_groupsHost);
+        if (!intoFlyout)
+        {
+            // Expanding: _groupsHost is currently inside popup's visual tree (separate overlay
+            // window with its own LayoutManager). Reparenting synchronously during a layout pass
+            // triggers "InvalidateArrange on wrong LayoutManager" in Avalonia 12.
+            // Close the popup first, then defer reparent to Background priority (after layout pass).
+            if (IsCollapsedPopupOpen)
+                IsCollapsedPopupOpen = false;
+            Dispatcher.UIThread.Post(() =>
+            {
+                if (_groupsHost?.Parent is ContentPresenter presenter)
+                    presenter.Content = null;
+                else if (_groupsHost?.Parent is ContentControl control)
+                    control.Content = null;
+                else if (_groupsHost?.Parent is Panel panel)
+                    panel.Children.Remove(_groupsHost);
 
-        if (intoFlyout)
-            _flyoutPresenter.Content = _groupsHost;
-        else
-            _mainPresenter.Content = _groupsHost;
+                _mainPresenter.Content = _groupsHost;
+            }, DispatcherPriority.Background);
+            return;
+        }
+
+        // Collapsing: popup is not yet rendering, safe to reparent synchronously.
+        if (_groupsHost.Parent is ContentPresenter presenter2)
+            presenter2.Content = null;
+        else if (_groupsHost.Parent is ContentControl control2)
+            control2.Content = null;
+        else if (_groupsHost.Parent is Panel panel2)
+            panel2.Children.Remove(_groupsHost);
+
+        _flyoutPresenter.Content = _groupsHost;
     }
 
     #endregion Methods

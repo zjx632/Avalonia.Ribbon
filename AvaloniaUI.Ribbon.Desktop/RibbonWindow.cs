@@ -158,35 +158,22 @@ public class RibbonWindow : Window
                 }
             };
 
-            /*try
+            try
             {
-                SetupSide("Left_top", StandardCursorType.LeftSide, WindowEdge.West, ref e);
-                SetupSide("Left_mid", StandardCursorType.LeftSide, WindowEdge.West, ref e);
-                SetupSide("Left_bottom", StandardCursorType.LeftSide, WindowEdge.West, ref e);
-                SetupSide("Right_top", StandardCursorType.RightSide, WindowEdge.East, ref e);
-                SetupSide("Right_mid", StandardCursorType.RightSide, WindowEdge.East, ref e);
-                SetupSide("Right_bottom", StandardCursorType.RightSide, WindowEdge.East, ref e);
-                SetupSide("Top", StandardCursorType.TopSide, WindowEdge.North, ref e);
-                SetupSide("Bottom", StandardCursorType.BottomSide, WindowEdge.South, ref e);
-                SetupSide("TopLeft", StandardCursorType.TopLeftCorner, WindowEdge.NorthWest, ref e);
-                SetupSide("TopRight", StandardCursorType.TopRightCorner, WindowEdge.NorthEast, ref e);
-                SetupSide("BottomLeft", StandardCursorType.BottomLeftCorner, WindowEdge.SouthWest, ref e);
-                SetupSide("BottomRight", StandardCursorType.BottomRightCorner, WindowEdge.SouthEast, ref e);
+                GetControl<Button>(e, "PART_MinimizeButton").Click += delegate
+                {
+                    window.WindowState = WindowState.Minimized;
+                };
+                GetControl<Button>(e, "PART_MaximizeButton").Click += delegate
+                {
+                    window.WindowState = window.WindowState == WindowState.Maximized ? WindowState.Normal : WindowState.Maximized;
+                };
+                GetControl<Button>(e, "PART_CloseButton").Click += delegate
+                {
+                    window.Close();
+                };
             }
             catch { }
-
-            GetControl<Button>(e, "PART_MinimizeButton").Click += delegate
-            {
-                window.WindowState = WindowState.Minimized;
-            };
-            GetControl<Button>(e, "PART_MaximizeButton").Click += delegate
-            {
-                window.WindowState = window.WindowState == WindowState.Maximized ? WindowState.Normal : WindowState.Maximized;
-            };
-            GetControl<Button>(e, "PART_CloseButton").Click += delegate
-            {
-                window.Close();
-            };*/
         }
         catch (KeyNotFoundException)
         {

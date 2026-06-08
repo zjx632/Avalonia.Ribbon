@@ -3,6 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:converters="clr-namespace:AvaloniaUI.Ribbon.Converters;assembly=AvaloniaUI.Ribbon"
     xmlns:windows="clr-namespace:AvaloniaUI.Ribbon.Desktop;assembly=AvaloniaUI.Ribbon.Desktop"
+    xmlns:ribbon="clr-namespace:AvaloniaUI.Ribbon;assembly=AvaloniaUI.Ribbon"
     xmlns:system="clr-namespace:System;assembly=netstandard">
     <Styles.Resources>
         <converters:BoundsPointToAdjustedPointConverter x:Key="BoundsPointToAdjustedPointConverter" />
@@ -164,7 +165,7 @@
                                                       Header="{DynamicResource AvaloniaRibbon.AddToQAT}" />
                                             <MenuItem
                                                 x:Name="PART_CollapseRibbon"
-                                                windows:QuickAccessToolbar.IsChecked="{Binding IsCollapsed, RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                                                ribbon:QuickAccessProperties.IsChecked="{Binding IsCollapsed, RelativeSource={RelativeSource Mode=TemplatedParent}}"
                                                 Header="{DynamicResource AvaloniaRibbon.MinimizeRibbon}" />
                                         </ContextMenu>
                                     </ItemsControl.ContextMenu>
@@ -307,7 +308,7 @@
                                                           Header="{DynamicResource AvaloniaRibbon.AddToQAT}" />
                                                 <MenuItem
                                                     x:Name="PART_CollapseRibbon"
-                                                    windows:QuickAccessToolbar.IsChecked="{Binding IsCollapsed, RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                                                    ribbon:QuickAccessProperties.IsChecked="{Binding IsCollapsed, RelativeSource={RelativeSource Mode=TemplatedParent}}"
                                                     Header="{DynamicResource AvaloniaRibbon.MinimizeRibbon}" />
                                             </ContextMenu>
                                         </ItemsControl.ContextMenu>
@@ -334,7 +335,7 @@
     </Style>
 
     <Style
-        Selector="windows|RibbonWindow[SystemDecorations=None] windows|DesktopRibbon[Orientation=Horizontal] /template/ Border#TabHeadersClipBorder">
+        Selector="windows|RibbonWindow[WindowDecorations=None] windows|DesktopRibbon[Orientation=Horizontal] /template/ Border#TabHeadersClipBorder">
         <Setter Property="Clip" Value="{DynamicResource TabHeadersClipBorderClip}" />
     </Style>
     <Style Selector="windows|RibbonWindow windows|DesktopRibbon /template/ Rectangle#HeaderBackgroundRectangle">

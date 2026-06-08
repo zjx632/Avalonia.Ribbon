@@ -5,7 +5,7 @@
 
     
 
-    <SolidColorBrush x:Key="RibbonHeaderBackgroundBrush" Color="{DynamicResource SystemControlBackgroundChromeMediumLowBrush}" />
+    <SolidColorBrush x:Key="RibbonHeaderBackgroundBrush" Color="{DynamicResource SystemControlBackgroundChromeMediumLow}" />
     <SolidColorBrush x:Key="RibbonGroupsBackgroundBrush" Color="Red" />
 
     <!--<LinearGradientBrush x:Key="RibbonGroupsBackgroundBrush" EndPoint="50%,100%" StartPoint="50%,0%" Opacity=".25">

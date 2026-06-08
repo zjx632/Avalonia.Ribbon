@@ -67,7 +67,7 @@
                                 </ContextMenu.Styles>
                                 <ContextMenu.DataTemplates>
                                     <DataTemplate DataType="{x:Type QuickAccessRecommendation}">
-                                        <TextBlock Text="{Binding Item.Content}" />
+                                        <TextBlock Text="{ReflectionBinding Item.Content}" />
                                     </DataTemplate>
                                 </ContextMenu.DataTemplates>
                             </ContextMenu>
